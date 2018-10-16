@@ -38,5 +38,10 @@ echo "Job is done"
         }
       }
     }
+    stage('result') {
+      steps {
+        mail(subject: 'blueocean', body: 'master')
+      }
+    }
   }
 }
