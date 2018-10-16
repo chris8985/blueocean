@@ -40,7 +40,7 @@ echo "Job is done"
     }
     stage('result') {
       steps {
-        mail(subject: 'blueocean', body: 'master')
+        mail(subject: 'blueocean', body: 'master', from: '123@qq.com', to: '456@qq.com')
       }
     }
   }
