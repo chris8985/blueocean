@@ -25,8 +25,17 @@ echo "Job is done"
       }
     }
     stage('test stage') {
-      steps {
-        echo 'message'
+      parallel {
+        stage('test stage') {
+          steps {
+            echo 'message'
+          }
+        }
+        stage('print message') {
+          steps {
+            echo 'message2'
+          }
+        }
       }
     }
   }
