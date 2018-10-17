@@ -36,20 +36,16 @@ echo "Job is done"
             echo 'message2'
           }
         }
+        stage('add job') {
+          steps {
+            build(job: 'first-free-job', quietPeriod: 5, wait: true)
+          }
+        }
       }
     }
     stage('result') {
-      parallel {
-        stage('result') {
-          steps {
-            mail(subject: 'blueocean', body: 'master', from: '123@qq.com', to: '456@qq.com')
-          }
-        }
-        stage('test') {
-          steps {
-            sleep 10
-          }
-        }
+      steps {
+        mail(subject: 'blueocean', body: 'master', from: '123@qq.com', to: '456@qq.com')
       }
     }
   }
