@@ -36,7 +36,7 @@ echo "Job is done"
             echo 'message2'
           }
         }
-        stage('add job') {
+        stage('add free job') {
           steps {
             build(job: 'first-free-job', quietPeriod: 5, wait: true)
           }
