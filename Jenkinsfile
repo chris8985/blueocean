@@ -39,8 +39,17 @@ echo "Job is done"
       }
     }
     stage('result') {
-      steps {
-        mail(subject: 'blueocean', body: 'master', from: '123@qq.com', to: '456@qq.com')
+      parallel {
+        stage('result') {
+          steps {
+            mail(subject: 'blueocean', body: 'master', from: '123@qq.com', to: '456@qq.com')
+          }
+        }
+        stage('test') {
+          steps {
+            sleep 10
+          }
+        }
       }
     }
   }
