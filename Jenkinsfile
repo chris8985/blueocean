@@ -24,21 +24,16 @@ echo "Job is done"
 #git log --pretty=tformat: --numstat | gawk \'{ add += $1 ; subs += $2 ; loc += $1 + $2 } END { printf "added lines: %s removed lines : %s total lines: %s\\n",add,subs,loc }\''''
       }
     }
-    stage('test stage') {
+    stage('print message') {
       parallel {
-        stage('test stage') {
-          steps {
-            echo 'message'
-          }
-        }
         stage('print message') {
           steps {
             echo 'message2'
           }
         }
-        stage('add free job') {
+        stage('add new job') {
           steps {
-            build(job: 'first-free-job', quietPeriod: 5, wait: true)
+            build(job: 'cicd-test', wait: true, quietPeriod: 5)
           }
         }
       }
