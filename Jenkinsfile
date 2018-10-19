@@ -36,6 +36,11 @@ echo "Job is done"
             build(job: 'cicd-test', wait: true, quietPeriod: 5)
           }
         }
+        stage('add new') {
+          steps {
+            node(label: 'ecnshlx3169')
+          }
+        }
       }
     }
     stage('result') {
